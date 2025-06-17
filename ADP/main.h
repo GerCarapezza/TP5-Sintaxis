@@ -33,6 +33,11 @@ EstadosPila pop(Nodo**);
 bool verificarADP (char[]);
 MOVIMIENTOS identificarMovimiento (Estados, EstadosPila);
 Entradas identificarEntrada(char);
+void ejecutarAccion (Movimiento, Nodo**, EstadosPila);
+
+//Debugs
+void debugPilaEntrada(Entradas, EstadosPila);
+void debugTablaDeMovimiento(MOVIMIENTOS, Entradas, Movimiento);
 
 
 #endif
