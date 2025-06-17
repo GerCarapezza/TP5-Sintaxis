@@ -23,6 +23,10 @@ typedef struct{
   ACCIONES accion;
 } Movimiento;
 
+//Globales
+
+extern bool debug;
+
 //Funciones de Pila
 Nodo* crearNodo(EstadosPila);
 void push(Nodo**, EstadosPila);
