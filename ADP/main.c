@@ -1,7 +1,7 @@
 #include "main.h"
 
-
 bool debug = false;
+//char* alfabeto = "(),";
 char* alfabeto = "abc";
 
 const char *RED = "\033[1;31m";
@@ -48,6 +48,12 @@ bool verificarADP (char palabra[]){
     Entradas entrada = identificarEntrada(palabra[i]);//identificamos la letra si es que pertenece al alfabeto
     EstadosPila top = pop(&pila);                     //identificamos valores actuales de la pila y estados para ubicarnos en la tabla
     MOVIMIENTOS enumMovimiento = identificarMovimiento(estadoActual, top);
+
+    /*Permitir caracteres fuera del alfabeto*/
+    // if (entrada == -1) {
+    //   push(&pila, top);
+    //   continue;
+    // }
 
     debugPilaEntrada(entrada, top);
 
