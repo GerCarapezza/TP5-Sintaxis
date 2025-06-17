@@ -54,7 +54,7 @@ bool verificarADP (char palabra[]){
     if (i == 0 && entrada != A){            //Si no comienza con a, no pertenece al lenguaje
       if (debug == true) printf("ERROR\n");
       resultado = false;
-      break;
+      return resultado;
     }
     
     Movimiento movimiento = tablaDeMovimientos[enumMovimiento][entrada];  //Accedemos a la tabla de movimiento
@@ -65,7 +65,7 @@ bool verificarADP (char palabra[]){
       
     if (movimiento.estado == -1 || movimiento.accion == -1){  //en la tabla se representa el caso de error como {-1, -1}
       resultado = false;
-      break;
+      return resultado;
     }
 
     ejecutarAccion (movimiento, &pila, top);
@@ -73,7 +73,6 @@ bool verificarADP (char palabra[]){
 
   EstadosPila top = pop(&pila);
   if (top != PESOS) resultado = false;
-
   return resultado;
 }
 
@@ -96,8 +95,8 @@ void ejecutarAccion (Movimiento movimiento, Nodo** pila, EstadosPila top){
       break;
     case RR://devolvemos el elemento R consumido y agregamos otro
       if (debug == true) printf("ACCION: RR \n");
-      push(pila, E_R);
       push(pila, top);
+      push(pila, E_R);
       break;
     case e://no devolvemos el elemento consumido (solo sacamos de la pila)
       if (debug == true) printf("ACCION: e \n");
