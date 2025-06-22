@@ -11,5 +11,18 @@ typedef enum {IZQUIERDA, DERECHA} Movimiento;
 
 char* crearCinta(char[]);
 bool verificarMT(char*);
+void accionar(int, Movimiento, Estados, char*, int*);
+
+void ejecutarE0(char*, int*);
+void ejecutarE1(char*, int*);
+void ejecutarE2(char*, int*);
+void ejecutarE3(char*, int*);
+void ejecutarE4(char*, int*);
+void ejecutarE5(char*, int*);
+void ejecutarE6(char*, int*);
+void ejecutarE7(char*, int*);
+void ejecutarE8(char*, int*);
+void ejecutarE9(char*, int*);
+void ejecutarE10(char*, int*);
 
 #endif
