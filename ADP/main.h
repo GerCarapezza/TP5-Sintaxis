@@ -33,7 +33,6 @@ void push(Nodo**, EstadosPila);
 EstadosPila pop(Nodo**);
 
 //Funciones
-
 bool verificarADP (char[]);
 MOVIMIENTOS identificarMovimiento (Estados, EstadosPila);
 Entradas identificarEntrada(char);

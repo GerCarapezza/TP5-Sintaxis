@@ -1,10 +1,11 @@
 #include "main.h"
 
+/*cada funcion de ejecucion recibe la cinta y el head (*i)*/
 void ejecutarE0(char* cinta, int* i){
     int entrada = cinta[*i];
     switch (entrada){
         case 'a':
-            accionar('X', DERECHA, E1, cinta, i);
+            accionar('X', DERECHA, E1, cinta, i);//accionar modifica la cinta, actualiza el estado y se desplaza par iz o der
             return;
         case 'Y':
             accionar('Y', DERECHA, E7, cinta, i);

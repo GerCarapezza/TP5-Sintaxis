@@ -1,6 +1,6 @@
 #include "main.h"
 
-bool debug = true;
+bool debug = false;
 char* alfabeto = "acde";
 
 const char *RED = "\033[1;31m";
@@ -15,9 +15,9 @@ int main() {
   printf("Ingrese una palabra a verificar... ");
   scanf("%s", &palabra);
   
-  char* cinta = crearCinta(palabra);
+  char* cinta = crearCinta(palabra); //crearCinta retorna un string con la palabra ingresada pero con B (representacion del vacio) en los extremos
 
-  //if (debug == true)  printf("Estado de la cinta: %s%s%s\n", GREEN, cinta, RESET);
+  if (debug == true)  printf("Estado de la cinta: %s%s%s\n", GREEN, cinta, RESET);
 
   /*Validamos si la palabra pertence al lenguaje*/
   bool validacion = verificarMT(cinta);
@@ -28,15 +28,16 @@ int main() {
   return 0;
 }
 
-bool verificarMT(char* cinta){
-  int longitudCinta = strlen(cinta);
+bool verificarMT(char* cinta){ //retorna un booleando que determima si es o no aceptada la palabra; recibe ls cinta en formato string
+  int longitudCinta = strlen(cinta); //consigo la longitud de la cinta
   
   if (debug == true) printf("longitudCinta: %d\n", longitudCinta);
 
+  /*este bucle for cumple la funcionalidad de la cinta, representado al head con i*/
   for (int i = 1; i < longitudCinta + 1; i++){
     if (debug == true)  printf("EstadoActual: %s%d%s\nEstado de la cinta: %s%s%s\n", GREEN, estadoActual, RESET, GREEN, cinta, RESET);
     
-    switch (estadoActual){
+    switch (estadoActual){//Dependiendo del estado actual se validara las entradas que puede recibir 
       case E0:
         ejecutarE0(cinta, &i);
         break;
@@ -76,14 +77,14 @@ bool verificarMT(char* cinta){
   return false;
 }
 
-
+/*accionar (caracter a escribir en ascii; direccion[Derecha o izquierda]; nuevo valor de estado[enum Estados]; cinta en formato string; la direccion del indicie para poder retrodecer de ser necesario)*/
 void accionar(int escritura, Movimiento direccion, Estados nuevoEstado, char* cinta, int* indice){
-  cinta[*indice] = escritura;
-  estadoActual = nuevoEstado;
-  if (direccion == IZQUIERDA) *indice = *indice - 2;
+  cinta[*indice] = escritura; //escribimos en la poscion del head, head es i
+  estadoActual = nuevoEstado; //actualizamos el estado al siguiente
+  if (direccion == IZQUIERDA) *indice = *indice - 2; //en caso de retroceder restamos 2 al head (1 porque al finalizar el ciclo for se sumara 1 y otro porque queremos retroceder)
 }
 
-char* crearCinta(char palabra[]){
+char* crearCinta(char palabra[]){//Devuelve cinta con los vacios y recive la palabra ingresada
   int longitud = strlen(palabra);
   char* nuevaCinta = malloc(longitud + 2);
 

@@ -1,8 +1,8 @@
 #include "main.h"
 
 bool debug = false;
-char* alfabeto = "(),";
-//char* alfabeto = "abc";
+//char* alfabeto = "(),";
+char* alfabeto = "abc";
 
 const char *RED = "\033[1;31m";
 const char *GREEN = "\033[1;32m";
@@ -41,8 +41,6 @@ bool verificarADP (char palabra[]){
   
   Estados estadoActual = E0;    //Estados iniciales {estado 0 y $ en la pila}
   Nodo* pila = crearNodo(PESOS);
-  
-  int cantidadDeC = 0;
 
   for (int i = 0; i < longitud; i++){             //Recorremos la palabra validad con el lenguaje
     Entradas entrada = identificarEntrada(palabra[i]);//identificamos la letra si es que pertenece al alfabeto
@@ -50,10 +48,10 @@ bool verificarADP (char palabra[]){
     MOVIMIENTOS enumMovimiento = identificarMovimiento(estadoActual, top);
 
     /*Permitir caracteres fuera del alfabeto*/
-    if (entrada == -1) {
-      push(&pila, top);
-      continue;
-    }
+    // if (entrada == -1) {
+    //   push(&pila, top);
+    //   continue;
+    // }
 
     debugPilaEntrada(entrada, top);
 
